@@ -24,7 +24,8 @@
             </div>
 <!--  <button v-on:click="nuevaTarea" > tarea nueva</button>-->
         
-       
+        <input v-model="query"  placeholder="Escribe lo que quieras buscar"> 
+	    
         <transition-group  name="list" tag="ul" id="tareas">
         <li v-for="nota in ordenados" :key="nota.pos"> 
 <!--            <h3>Completada={{nota.completada}}</h3>-->
@@ -167,7 +168,11 @@ completar: function( pos){
             },
             
             ordenados:function(){
-                return _.orderBy(this.notas,['prioridad'],['desc'])
+                var vm=this;
+              var ordenar=   _.orderBy(this.notas,['prioridad'],['desc']);
+                return ordenar.filter(function(nota){
+                    return nota.tarea.toLowerCase().indexOf(vm.query.toLowerCase()) !==-1
+                })
             }
       
 //            ordenadas:function(){
