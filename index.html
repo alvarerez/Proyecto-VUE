@@ -16,6 +16,7 @@
 		<h1>Proyecto Vue.js - Ángel Álvarez Burgos</h1>
          
          <input v-model="nueva" v-on:keyup.enter="nuevaTarea" placeholder="Escriba su nueva tarea"> 
+	<input v-model="query"  placeholder="Escribe lo que quieras buscar"> 
         </div>
         
         <div id="encabezado">
@@ -24,7 +25,7 @@
             </div>
 <!--  <button v-on:click="nuevaTarea" > tarea nueva</button>-->
         
-        <input v-model="query"  placeholder="Escribe lo que quieras buscar"> 
+       
 	    
         <transition-group  name="list" tag="ul" id="tareas">
         <li v-for="nota in ordenados" :key="nota.pos"> 
@@ -103,7 +104,8 @@
       
   
       ],
-      nueva:''
+      nueva:'',
+      query:''
   },
         mounted() {
           
